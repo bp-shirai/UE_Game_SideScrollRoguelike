@@ -18,6 +18,7 @@ class UObject;
 class UWorld;
 struct FFrame;
 struct FWorldContext;
+class UUserWidget;
 
 /**
  * Handles showing/hiding the loading screen

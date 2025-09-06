@@ -19,14 +19,16 @@ public:
 
     ARogueCharacterBase();
 
-    //~~~~ Begin ACharacter Interface
+    //--- Begin ACharacter overrides 
+
     // Called when the character has landed on the ground
     virtual void Landed(const FHitResult &Hit) override;
     virtual void BeginPlay() override;
-    //~~~~ End ACharacter Interface
+
+    //--- End ACharacter overrides 
 
     UFUNCTION(BlueprintCallable, BlueprintPure, Category = "Rogue|Character|State")
-    bool IsDead() { return CurrentHitPoints <= 0; }
+    bool IsDead() const { return CurrentHitPoints <= 0; }
 
     // Applies a hit to this character
     UFUNCTION(BlueprintCallable, Category = "Rogue|Character|Combat")
@@ -42,7 +44,7 @@ public:
 
     // Notified by the hit animation that the character's head is fully reeled back so we can play any hit VFX
     UFUNCTION(BlueprintImplementableEvent, BlueprintCallable, Category = "Rogue|Character|Combat")
-    void OnAnimNotifyHitEffect();
+    void OnAnimNotifyHitEffect_BP();
 
     // Delegate that is fired when the character dies
     UPROPERTY(BlueprintAssignable, Category = "Rogue|Character|Combat")

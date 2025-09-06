@@ -6,21 +6,29 @@
 #include "GameFramework/Actor.h"
 #include "RogueEnemyPatrolRigActor.generated.h"
 
+class URogueEnemyPatrolRigComponent;
+
+/*
+ * This is an example of an actor class with a default subobject generated at construction time. This is useful
+ * for guaranteeing there is a required component placed into the hierarchy that cannot be removed.
+ *
+ * This essentially wraps our RogueEnemyPatrolRigComponent to allow it to be placed anywhere in
+ * the level. This provides additional flexibility, as we can either place this actor into the level to
+ * place a patrol at any arbitrary location, or attach the component directly to an object instance
+ * that already exists in the level.
+ */
+
 UCLASS()
 class SIDESCROLLROGUELIKE_API ARogueEnemyPatrolRigActor : public AActor
 {
-	GENERATED_BODY()
-	
-public:	
-	// Sets default values for this actor's properties
-	ARogueEnemyPatrolRigActor();
+    GENERATED_BODY()
 
-protected:
-	// Called when the game starts or when spawned
-	virtual void BeginPlay() override;
+public:
+    // Default constructor
+    ARogueEnemyPatrolRigActor();
 
-public:	
-	// Called every frame
-	virtual void Tick(float DeltaTime) override;
-
+public:
+    // The created patrol rig component that this actor owns
+    UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+    TObjectPtr<URogueEnemyPatrolRigComponent> PatrolRigComponent;
 };

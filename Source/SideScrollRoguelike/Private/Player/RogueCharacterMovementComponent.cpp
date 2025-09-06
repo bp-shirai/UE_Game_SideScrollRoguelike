@@ -190,8 +190,27 @@ void URogueCharacterMovementComponent::DoEnemyJump()
     // We want to apply the jump differently depending on whether or not the player is holding down the jump button
     if (const ARoguePlayerCharacter* RoguePlayerCharacter = Cast<ARoguePlayerCharacter>(CharacterOwner))
     {
-
+        if (RoguePlayerCharacter->IsJumpInputActive() || bJumpInputActive)
+        {
+            // If the player's holding the jump button, we should reset gravity scale
+            GravityScale = DefaultGravityScale;
+        }
+        else
+        {
+            // Gravity should continue being applied at its maximum scale so DoJump should ignore any reset
+            bIgnoreInitialJumpStateReset = true;
+        }
     }
+    else
+    {
+        bIgnoreInitialJumpStateReset = true;
+    }
+
+    // Allows the 'Can Jump' check to pass done in Do Jump
+    bPerformingEnemyJump = true;
+
+    // Note that parameters are not used in this function but are kept for parent class consistency
+    DoJump(false, 0.f);
 }
 
 void URogueCharacterMovementComponent::TickMovementTimers(float DeltaTime)
@@ -213,7 +232,7 @@ void URogueCharacterMovementComponent::TickMovementTimers(float DeltaTime)
 void URogueCharacterMovementComponent::InterpolateFallingGravity(float DeltaTime)
 {
     // We have to clamp the alpha otherwise the ease will take us beyond 1.0/target blend value
-    float Alpha = FMath::Clamp(FallTime / FallGravityBlendTime, 0.f, 1.f);
+    float Alpha  = FMath::Clamp(FallTime / FallGravityBlendTime, 0.f, 1.f);
     GravityScale = UKismetMathLibrary::Ease(FallBeginGravityScale, FallMaxGravityScale, Alpha, GravityEasingType, FallGravityEaseBlend, FallGravityStep);
     FallTime += DeltaTime;
 }

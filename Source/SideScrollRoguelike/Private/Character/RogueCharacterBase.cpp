@@ -60,7 +60,7 @@ void ARogueCharacterBase::CharacterDeath()
 
     // We want to play the hit effect if the character dies. The hit animation
     // won't play to trigger the anim notify, so we call it manually.
-    OnAnimNotifyHitEffect();
+    OnAnimNotifyHitEffect_BP();
 
     // Invoke the BlueprintImplementable Event so the derived blueprint class knows
     OnCharacterDeath_BP();

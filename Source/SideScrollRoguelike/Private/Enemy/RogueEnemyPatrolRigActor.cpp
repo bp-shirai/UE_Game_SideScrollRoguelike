@@ -1,27 +1,18 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-
 #include "Enemy/RogueEnemyPatrolRigActor.h"
 
-// Sets default values
+#include "Enemy/RogueEnemyPatrolRigComponent.h"
+
+#include UE_INLINE_GENERATED_CPP_BY_NAME(RogueEnemyPatrolRigActor)
+
+/*
+ * All we need to do here is create our default subobject, the RogueEnemyPatrolRig, and set it as our root component.
+ * This means that the hierarchy is generated for each instance as we place it into the level.
+ */
 ARogueEnemyPatrolRigActor::ARogueEnemyPatrolRigActor()
 {
- 	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
-	PrimaryActorTick.bCanEverTick = true;
-
+    PatrolRigComponent = CreateDefaultSubobject<URogueEnemyPatrolRigComponent>(TEXT("PatrolRig"));
+    RootComponent      = CreateDefaultSubobject<USceneComponent>(TEXT("RootSceneComponent"));
+    PatrolRigComponent->SetupAttachment(RootComponent);
 }
-
-// Called when the game starts or when spawned
-void ARogueEnemyPatrolRigActor::BeginPlay()
-{
-	Super::BeginPlay();
-	
-}
-
-// Called every frame
-void ARogueEnemyPatrolRigActor::Tick(float DeltaTime)
-{
-	Super::Tick(DeltaTime);
-
-}
-
