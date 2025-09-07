@@ -10,22 +10,22 @@ SIDESCROLLROGUELIKE_API DECLARE_LOG_CATEGORY_EXTERN(LogGame, Log, All);
 // Perception System simple Team Numbers
 namespace TeamID
 {
-    static uint8 Bots    = 1;
-    static uint8 Players = 2;
+    static const uint8 Bots    = 1;
+    static const uint8 Players = 2;
 } // namespace TeamID
 
 namespace CollisionProfile
 {
-    static FName Ragdoll           = FName("Ragdoll");
-    static FName OverlapAllPLayers = FName("OverlapAllPlayers");
-    static FName Projectile        = FName("Projectile");
-    static FName PickupItem        = FName("PickupItem");
-    static FName Player_Capsule    = FName("Player_Capsule");
-    static FName Player_Mesh       = FName("Player_Mesh");
-    static FName Player_Hurt       = FName("Player_Hurt");
-    static FName Enemy_Capsule     = FName("Enemy_Capsule");
-    static FName Enemy_Mesh        = FName("Enemy_Mesh");
-    static FName Enemy_Hurt        = FName("Enemy_Hurt");
+    static const FName Ragdoll           = FName("Ragdoll");
+    static const FName OverlapAllPLayers = FName("OverlapAllPlayers");
+    static const FName Projectile        = FName("Projectile");
+    static const FName PickupItem        = FName("PickupItem");
+    static const FName Player_Capsule    = FName("Player_Capsule");
+    static const FName Player_Mesh       = FName("Player_Mesh");
+    static const FName Player_Hurt       = FName("Player_Hurt");
+    static const FName Enemy_Capsule     = FName("Enemy_Capsule");
+    static const FName Enemy_Mesh        = FName("Enemy_Mesh");
+    static const FName Enemy_Hurt        = FName("Enemy_Hurt");
 
 } // namespace CollisionProfile
 
@@ -33,9 +33,9 @@ namespace CollisionProfile
  * also DefaultEngine.ini [/Script/Engine.CollisionProfile] should match with this list **/
 namespace CollisionChannel
 {
-    ECollisionChannel Player     = ECC_GameTraceChannel1;
-    ECollisionChannel Projectile = ECC_GameTraceChannel2;
-    ECollisionChannel Enemy      = ECC_GameTraceChannel3;
+    static const ECollisionChannel Player     = ECC_GameTraceChannel1;
+    static const ECollisionChannel Projectile = ECC_GameTraceChannel2;
+    static const ECollisionChannel Enemy      = ECC_GameTraceChannel3;
 
 } // namespace CollisionChannel
 
@@ -43,19 +43,19 @@ namespace CollisionChannel
  * also DefaultEngine.ini [/Script/Engine.PhysicsSettings] should match with this list **/
 namespace PhysicalSurface
 {
-    EPhysicalSurface Default  = SurfaceType_Default;
-    EPhysicalSurface Concrete = SurfaceType1;
-    EPhysicalSurface Dirt     = SurfaceType2;
-    EPhysicalSurface Water    = SurfaceType3;
-    EPhysicalSurface Metal    = SurfaceType4;
-    EPhysicalSurface Wood     = SurfaceType5;
-    EPhysicalSurface Grass    = SurfaceType6;
-    EPhysicalSurface Glass    = SurfaceType7;
-    EPhysicalSurface Flesh    = SurfaceType8;
+    static const EPhysicalSurface Default  = SurfaceType_Default;
+    static const EPhysicalSurface Concrete = SurfaceType1;
+    static const EPhysicalSurface Dirt     = SurfaceType2;
+    static const EPhysicalSurface Water    = SurfaceType3;
+    static const EPhysicalSurface Metal    = SurfaceType4;
+    static const EPhysicalSurface Wood     = SurfaceType5;
+    static const EPhysicalSurface Grass    = SurfaceType6;
+    static const EPhysicalSurface Glass    = SurfaceType7;
+    static const EPhysicalSurface Flesh    = SurfaceType8;
 
-    EPhysicalSurface ZombieBody = SurfaceType9;
-    EPhysicalSurface ZombieHead = SurfaceType10;
-    EPhysicalSurface ZombieLimb = SurfaceType11;
+    static const EPhysicalSurface ZombieBody = SurfaceType9;
+    static const EPhysicalSurface ZombieHead = SurfaceType10;
+    static const EPhysicalSurface ZombieLimb = SurfaceType11;
 } // namespace PhysicalSurface
 
 /** keep in sync with ImpactEffect */
